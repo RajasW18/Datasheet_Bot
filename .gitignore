@@ -4,3 +4,7 @@ dist/
 uploads/
 *.log
 .DS_Store
+
+# Local AI agent configuration and downloaded skills
+.agent/
+.agents/

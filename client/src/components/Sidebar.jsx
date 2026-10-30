@@ -21,8 +21,9 @@ export function Sidebar({ sessions, activeSessionId, onSelectSession, onNewSessi
       <div className="sidebar-sessions">
         <div className="sidebar-sessions-title">Sessions</div>
         {sessions.length === 0 ? (
-          <div style={{ padding: "12px", color: "var(--text-tertiary)", fontSize: "var(--text-xs)" }}>
-            Upload a datasheet to start
+          <div className="sidebar-empty-state">
+            <FileText size={20} />
+            <p>No active sessions<br />Upload a datasheet to begin</p>
           </div>
         ) : (
           sessions.map((session) => (

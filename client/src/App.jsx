@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import { Sidebar } from "./components/Sidebar";
 import { Header } from "./components/Header";
 import { WelcomeScreen } from "./components/WelcomeScreen";
@@ -262,7 +263,12 @@ function App() {
       {/* ── Toast Notification ── */}
       {toast && (
         <div className={`toast ${toast.type}`}>
-          {toast.type === "error" ? "❌" : "✅"} {toast.message}
+          {toast.type === "error" ? (
+            <AlertCircle size={16} className="toast-icon error" />
+          ) : (
+            <CheckCircle2 size={16} className="toast-icon success" />
+          )}
+          <span>{toast.message}</span>
         </div>
       )}
     </>

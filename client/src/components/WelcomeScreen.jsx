@@ -223,20 +223,13 @@ Pin 1: PC6 (/RESET), Pin 2: PD0 (RXD), Pin 3: PD1 (TXD), Pin 7: VCC, Pin 8: GND,
           </div>
         </div>
 
-        {/* Engineering features strip */}
-        <div className="features-strip">
-          <div className="feature-item">
-            <ShieldCheck size={15} className="text-emerald" />
-            <span>Absolute Max Rating Guardian</span>
-          </div>
-          <div className="feature-item">
-            <Zap size={15} className="text-cyan" />
-            <span>Sub-second Groq LPU Inference</span>
-          </div>
-          <div className="feature-item">
-            <FileText size={15} className="text-purple" />
-            <span>Automatic Pinout & Table Extractor</span>
-          </div>
+        {/* Compact powered-by strip */}
+        <div className="workbench-footer-strip">
+          <span><ShieldCheck size={12} className="text-emerald" /> Absolute Max Rating Guardian</span>
+          <span className="workbench-footer-dot" />
+          <span><Zap size={12} className="text-cyan" /> Groq LPU · Sub-second Inference</span>
+          <span className="workbench-footer-dot" />
+          <span><FileText size={12} /> Auto Pinout & Table Extraction</span>
         </div>
       </div>
     </div>

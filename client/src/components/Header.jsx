@@ -1,4 +1,4 @@
-import { FileText, Download, Trash2, Home, LogIn, LogOut, User as UserIcon } from "lucide-react";
+import { FileText, Download, Trash2, Home, LogIn, LogOut, User as UserIcon, Cpu } from "lucide-react";
 
 /**
  * Header — Top bar with file info, status, user auth, and actions.
@@ -21,9 +21,17 @@ export function Header({
           onClick={onSwitchToLanding}
           title="Return to Landing Page & Showcase"
         >
-          <Home size={15} />
-          <span>Home</span>
+          <Home size={14} />
+          <span>Showcase</span>
         </button>
+
+        <span className="header-divider" />
+
+        <div className="header-brand-tag" title="DatasheetIQ Hardware Intelligence">
+          <Cpu size={15} className="text-cyan" />
+          <span className="header-brand-name">DatasheetIQ</span>
+          <span className="header-brand-badge">PRO</span>
+        </div>
 
         {fileName ? (
           <div className="header-file-badge">
@@ -38,7 +46,7 @@ export function Header({
 
         <div className="header-status">
           <span className={`status-dot ${isConnected ? "" : "error"}`} />
-          <span>{isConnected ? "API Connected" : "API Disconnected"}</span>
+          <span>{isConnected ? "API Live" : "API Offline"}</span>
         </div>
       </div>
 

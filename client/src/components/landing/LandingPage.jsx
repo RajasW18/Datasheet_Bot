@@ -12,6 +12,7 @@ import {
   Terminal,
   FileText,
   CheckCircle2,
+  XCircle,
   Lock,
   ChevronRight,
   ExternalLink,
@@ -29,6 +30,7 @@ export function LandingPage({ onEnterApp, onOpenAuth, user }) {
   // Interactive Simulator state in Hero
   const [selectedChip, setSelectedChip] = useState("ice2pcs01");
   const [testVoltage, setTestVoltage] = useState(18);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const chipsData = {
     ice2pcs01: {
@@ -120,6 +122,17 @@ export function LandingPage({ onEnterApp, onOpenAuth, user }) {
           </nav>
 
           <div className="landing-nav-actions">
+            {/* Hamburger — mobile only */}
+            <button
+              className="landing-nav-hamburger"
+              aria-label="Toggle navigation"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+            >
+              <span className="hamburger-line" />
+              <span className="hamburger-line" />
+              <span className="hamburger-line" />
+            </button>
+
             {user ? (
               <div className="nav-user-pill">
                 <img src={user.avatar} alt={user.name} className="user-avatar-sm" />
@@ -140,6 +153,14 @@ export function LandingPage({ onEnterApp, onOpenAuth, user }) {
             )}
           </div>
         </div>
+
+        {/* Mobile dropdown menu */}
+        <nav className={`landing-mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
+          <a href="#simulator" onClick={() => setMobileMenuOpen(false)}>Live Simulator</a>
+          <a href="#bento" onClick={() => setMobileMenuOpen(false)}>Safety Engine</a>
+          <a href="#comparison" onClick={() => setMobileMenuOpen(false)}>Why DatasheetIQ</a>
+          <a href="#specs" onClick={() => setMobileMenuOpen(false)}>Specifications</a>
+        </nav>
       </header>
 
       {/* ── Hero Section ───────────────────────────── */}
@@ -430,32 +451,50 @@ export function LandingPage({ onEnterApp, onOpenAuth, user }) {
               <tr>
                 <td>Absolute Maximum Rating Alerts</td>
                 <td className="text-muted">Manual Search</td>
-                <td className="text-danger">❌ Often Ignores</td>
-                <td className="highlight-col text-emerald">✅ Enforced & Highlighted</td>
+                <td className="text-danger">
+                  <span className="table-status-pill danger"><XCircle size={13} /> Often Ignores</span>
+                </td>
+                <td className="highlight-col text-emerald">
+                  <span className="table-status-pill success"><CheckCircle2 size={13} /> Enforced & Highlighted</span>
+                </td>
               </tr>
               <tr>
                 <td>Table & Pin Extraction</td>
                 <td className="text-muted">Manual Copy/Paste</td>
-                <td className="text-danger">❌ Tables get misaligned</td>
-                <td className="highlight-col text-emerald">✅ Auto-Parsed Parameters</td>
+                <td className="text-danger">
+                  <span className="table-status-pill danger"><XCircle size={13} /> Tables get misaligned</span>
+                </td>
+                <td className="highlight-col text-emerald">
+                  <span className="table-status-pill success"><CheckCircle2 size={13} /> Auto-Parsed Parameters</span>
+                </td>
               </tr>
               <tr>
                 <td>Missing Sub-system Catching</td>
                 <td className="text-muted">None</td>
-                <td className="text-danger">❌ Rarely suggests decoupling</td>
-                <td className="highlight-col text-emerald">✅ Flags missing pull-ups/caps</td>
+                <td className="text-danger">
+                  <span className="table-status-pill danger"><XCircle size={13} /> Rarely suggests decoupling</span>
+                </td>
+                <td className="highlight-col text-emerald">
+                  <span className="table-status-pill success"><CheckCircle2 size={13} /> Flags missing pull-ups/caps</span>
+                </td>
               </tr>
               <tr>
                 <td>Inference Speed</td>
                 <td className="text-muted">N/A</td>
                 <td className="text-amber">10–30s wait time</td>
-                <td className="highlight-col text-cyan">⚡ &lt; 1s on Groq LPU</td>
+                <td className="highlight-col text-cyan">
+                  <span className="table-status-pill cyan"><Zap size={13} /> &lt; 1s on Groq LPU</span>
+                </td>
               </tr>
               <tr>
                 <td>OCR Error Rectification</td>
                 <td className="text-muted">N/A</td>
-                <td className="text-danger">❌ Hallucinates garbage</td>
-                <td className="highlight-col text-emerald">✅ Heuristic Correction</td>
+                <td className="text-danger">
+                  <span className="table-status-pill danger"><XCircle size={13} /> Hallucinates garbage</span>
+                </td>
+                <td className="highlight-col text-emerald">
+                  <span className="table-status-pill success"><CheckCircle2 size={13} /> Heuristic Correction</span>
+                </td>
               </tr>
             </tbody>
           </table>

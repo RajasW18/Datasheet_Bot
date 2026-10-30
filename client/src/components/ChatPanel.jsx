@@ -58,15 +58,7 @@ export function ChatPanel({
               specifications, maximum ratings, application circuits, or design validation.
             </p>
             {/* Suggestion chips */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "8px",
-                justifyContent: "center",
-                marginTop: "24px",
-              }}
-            >
+            <div className="suggestion-chips-container">
               {[
                 "What are the absolute maximum ratings?",
                 "Show me the pinout",
@@ -75,31 +67,11 @@ export function ChatPanel({
               ].map((suggestion) => (
                 <button
                   key={suggestion}
+                  type="button"
+                  className="suggestion-chip"
                   onClick={() => {
                     setInput(suggestion);
-                    // Focus the textarea
                     textareaRef.current?.focus();
-                  }}
-                  style={{
-                    padding: "8px 16px",
-                    background: "var(--bg-surface)",
-                    border: "1px solid var(--border-default)",
-                    borderRadius: "var(--radius-full)",
-                    color: "var(--text-secondary)",
-                    fontSize: "var(--text-sm)",
-                    cursor: "pointer",
-                    fontFamily: "var(--font-sans)",
-                    transition: "all 0.15s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.borderColor = "var(--border-accent)";
-                    e.target.style.color = "var(--accent-cyan)";
-                    e.target.style.background = "var(--accent-cyan-soft)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.borderColor = "var(--border-default)";
-                    e.target.style.color = "var(--text-secondary)";
-                    e.target.style.background = "var(--bg-surface)";
                   }}
                 >
                   {suggestion}
